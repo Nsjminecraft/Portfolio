@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Import Three.js -->
+  <script async src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
+  <script async src="https://unpkg.com/three@0.157.0/examples/jsm/controls/OrbitControls.js"></script>
+  <script async src="https://unpkg.com/three@0.157.0/examples/jsm/loaders/FontLoader.js"></script>
+  <script async src="https://unpkg.com/three@0.157.0/examples/jsm/geometries/TextGeometry.js"></script>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Background Canvas -->
+  <div class="background-canvas">
+    <canvas id="stars-canvas"></canvas>
+  </div>
+
+  <!-- Gradient overlay -->
+  <div class="gradient-overlay"></div>
+
+  <!-- Glass panel overlay -->
+  <div class="glass-panel-overlay"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="#hero" class="logo">Portfolio</a>
+        <div class="nav-links" id="nav-links">
+          <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menu-toggle">
+          <span class="menu-icon">☰</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container">
+      <div class="mobile-menu-header">
+        <a href="#hero" class="logo">Portfolio</a>
+        <button class="close-menu" id="close-menu">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link" data-section="hero">Home</a>
+        <a href="#about" class="mobile-nav-link" data-section="about">About</a>
+        <a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a>
+        <a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a>
+        <a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h2 class="subtitle">Hello, I'm</h2>
+            <h1 class="title">Full Stack Developer</h1>
+            <div class="description">
+              <p>Building innovative web applications with modern technologies. Specializing in creating seamless user experiences with cutting-edge tools.</p>
+            </div>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+          </div>
+          <div class="hero-visual" id="hero-visual">
+            <!-- 3D content will be rendered here -->
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <div class="arrow-down">↓</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <div class="glass-card">
+              <h3>Who I Am</h3>
+              <p>I'm a passionate full stack developer with a keen eye for detail and a love for creating elegant, efficient solutions. With years of experience in web development, I specialize in building responsive, user-friendly applications that solve real-world problems.</p>
+            </div>
+            
+            <div class="glass-card">
+              <h3>My Approach</h3>
+              <p>I believe in writing clean, maintainable code and staying up-to-date with the latest technologies and best practices. My approach combines technical expertise with creative problem-solving to deliver exceptional results for every project.</p>
+            </div>
+          </div>
+          
+          <div class="about-skills">
+            <div class="skill-card">
+              <div class="skill-icon frontend-icon">
+                <i class="icon-globe"></i>
+              </div>
+              <h4>Frontend</h4>
+              <p>Creating responsive, interactive user interfaces</p>
+            </div>
+            
+            <div class="skill-card">
+              <div class="skill-icon backend-icon">
+                <i class="icon-database"></i>
+              </div>
+              <h4>Backend</h4>
+              <p>Building robust server-side applications</p>
+            </div>
+            
+            <div class="skill-card">
+              <div class="skill-icon code-icon">
+                <i class="icon-code"></i>
+              </div>
+              <h4>Clean Code</h4>
+              <p>Writing maintainable, efficient code</p>
+            </div>
+            
+            <div class="skill-card">
+              <div class="skill-icon architecture-icon">
+                <i class="icon-layers"></i>
+              </div>
+              <h4>Architecture</h4>
+              <p>Designing scalable application structures</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">My Skills</h2>
+          <div class="section-divider"></div>
+          <p class="section-description">Explore my interactive skill universe. Hover over the skill nodes to see details about my proficiency levels. The size and distance of each node represents my experience level.</p>
+        </div>
+        
+        <div class="skills-graph-container">
+          <div id="skills-graph" class="skills-graph">
+            <!-- 3D skills graph will be rendered here -->
+          </div>
+        </div>
+        
+        <div class="skills-categories">
+          <div class="category-card frontend-card">
+            <div class="category-icon"></div>
+            <h3>Frontend Development</h3>
+            <p>Creating responsive, interactive user interfaces with modern frameworks and libraries</p>
+          </div>
+          
+          <div class="category-card backend-card">
+            <div class="category-icon"></div>
+            <h3>Backend Development</h3>
+            <p>Building robust server-side applications and APIs with scalable architecture</p>
+          </div>
+          
+          <div class="category-card devops-card">
+            <div class="category-icon"></div>
+            <h3>DevOps & Tools</h3>
+            <p>Implementing CI/CD pipelines, containerization, and cloud infrastructure</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">My Projects</h2>
+          <div class="section-divider"></div>
+          <p class="section-description">Explore my interactive gallery of projects showcasing my skills and experience in full stack development. Navigate through the projects and click on any project to view details.</p>
+        </div>
+        
+        <div class="projects-filter">
+          <div class="filter-dropdown">
+            <button class="filter-button" id="filter-button">
+              <span class="filter-icon">⚙</span>
+              <span id="current-filter">All Projects</span>
+            </button>
+            <div class="filter-dropdown-content" id="filter-dropdown-content">
+              <a href="#" class="filter-item active" data-filter="all">All Projects</a>
+              <!-- Filter items will be added dynamically -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="projects-gallery-container">
+          <div id="projects-gallery" class="projects-gallery">
+            <!-- 3D projects gallery will be rendered here -->
+          </div>
+          
+          <div class="project-card" id="active-project">
+            <!-- Active project details will be displayed here -->
+          </div>
+          
+          <div class="gallery-controls">
+            <button class="gallery-control prev" id="prev-project">❮</button>
+            <div class="gallery-indicators" id="gallery-indicators">
+              <!-- Indicators will be added dynamically -->
+            </div>
+            <button class="gallery-control next" id="next-project">❯</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="section-divider"></div>
+          <p class="section-description">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+        </div>
+        
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon email-icon">
+                <i class="icon-mail"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <p>contact@example.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon phone-icon">
+                <i class="icon-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <p>+1 (555) 123-4567</p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon location-icon">
+                <i class="icon-map-pin"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Location</h3>
+                <p>San Francisco, CA</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form-container">
+            <h3>Send Me a Message</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name" required class="form-input">
+              </div>
+              
+              <div class="form-group">
+                <input type="email" placeholder="Your Email" required class="form-input">
+              </div>
+              
+              <div class="form-group">
+                <input type="text" placeholder="Subject" required class="form-input">
+              </div>
+              
+              <div class="form-group">
+                <textarea placeholder="Your Message" required class="form-textarea"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-full">
+                <span class="btn-icon">✉</span> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="copyright">
+          © <span id="current-year"></span> | Designed & Built with ❤️
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="icon-github"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="icon-linkedin"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="icon-mail"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="icon-external-link"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <div class="toast-content">
+      <div class="toast-title" id="toast-title"></div>
+      <div class="toast-message" id="toast-message"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script src="three-scenes.js"></script>
+</body>
+</html>
+
